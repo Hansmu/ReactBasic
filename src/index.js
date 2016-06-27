@@ -2,9 +2,18 @@
 import React from 'react'; //Knows how to work with React components.
 import ReactDOM from 'react-dom'; //To render the elements to the actual DOM.
 
+import SearchBar from './components/search_bar';
+
+const API_KEY = "AIzaSyDkidiQEgNxblRS5oJvfud5Xf3T9M2kaYA";
+
 //Create a new component. This component should produce some HTML.
 const App = () => { // const is ES6 syntax. A constant. => Fat arrow ES6 syntax to declare a function.
-    return <div>Hi!</div>; //JSX - lets us write HTML looking code that's really just Javascript. JSX needs to be translated, can't be understood normally by a browser.
+    return (
+        <div>
+            <SearchBar />
+        </div>
+    ); //JSX - lets us write HTML looking code that's really just Javascript. JSX needs to be translated, can't be understood normally by a browser.
+    //Have parentheses when you have a multiline element.
     //Without JSX, the code would be a lot less readable and lengthier.
 }
 
