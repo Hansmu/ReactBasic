@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; //Need React whenever you use JSX. {} pulls off a single component from the library called component as component.
 //Functional component is just a function. Class component is used when you want internal record keeping.
 //Should use a functional component by default and only refactor if it looks like you're going to need a class based component.
-export default class SearchBar extends Component {
+class SearchBar extends Component {
     constructor(props) { //All JS classes have a constructor. Automatically called when a new instance of the class is created.
         super(props); //Call parent class constructor.
         this.state = { term: '' }; //When we use state, we initialize it and set it to this.state.
@@ -21,4 +21,4 @@ export default class SearchBar extends Component {
     }
 }
 
-//export default SearchBar; //Export default makes it so that the default thing we import when we use the file is the element we specify here.
+export default SearchBar; //Export default makes it so that the default thing we import when we use the file is the element we specify here.
