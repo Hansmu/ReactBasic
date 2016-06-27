@@ -1,4 +1,5 @@
 //Every file that we write is separated from other code that we write, so we have to use imports to get access to other files.
+import _ from 'lodash';
 import React, { Component } from 'react'; //Knows how to work with React components.
 import ReactDOM from 'react-dom'; //To render the elements to the actual DOM.
 import YTSearch from 'youtube-api-search';
@@ -33,6 +34,8 @@ class App extends Component { // const is ES6 syntax. A constant. => Fat arrow E
     }
 
     render() {
+        const videoSearch = _.debounce((term) => { this.videoSearch(term)}, 300); //Returns a new function that can be called every 300 ms.
+
         return (
             <div>
                 <SearchBar onSearchTermChange={ term => this.videoSearch(term) }/>
