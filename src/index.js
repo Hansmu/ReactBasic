@@ -5,6 +5,7 @@ import YTSearch from 'youtube-api-search';
 
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
 const API_KEY = "AIzaSyDkidiQEgNxblRS5oJvfud5Xf3T9M2kaYA";
 
@@ -14,10 +15,16 @@ const API_KEY = "AIzaSyDkidiQEgNxblRS5oJvfud5Xf3T9M2kaYA";
 class App extends Component { // const is ES6 syntax. A constant. => Fat arrow ES6 syntax to declare a function.
     constructor(props) {
         super(props);
-        this.state = { videos: [] };
+        this.state = {
+            videos: [],
+            selectedVideo: null
+        };
 
         YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
-            this.setState({ videos }); //videos: videos can be condensed to that because the names are the same.
+            this.setState({
+                videos: videos,
+                selectedVideo: videos[0]
+            }); //videos: videos can be condensed to that because the names are the same.
         });
     }
 
@@ -25,9 +32,12 @@ class App extends Component { // const is ES6 syntax. A constant. => Fat arrow E
         return (
             <div>
                 <SearchBar />
-                <VideoList videos={this.state.videos} />
-            </div> //Passing props to VideoList called videos. Arrives as an argument under props.
-        );
+                <VideoDetail video={this.state.selectedVideo}/>
+                <VideoList
+                    onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                    videos={this.state.videos} />
+            </div> //Passing props to VideoList called videos. Arrives as an argument under props. Pass a callback function with onVideoSelect.
+        );//Callbacks shouldn't go deeper than two levels.
     }; //JSX - lets us write HTML looking code that's really just Javascript. JSX needs to be translated, can't be understood normally by a browser.
     //Have parentheses when you have a multiline element.
     //Without JSX, the code would be a lot less readable and lengthier.
