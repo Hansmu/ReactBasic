@@ -14,3 +14,4 @@ ReactDOM.render(
   </Provider>
   , document.querySelector('.container'));
 
+//Run command: npm start
