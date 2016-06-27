@@ -2,7 +2,9 @@
 import React, { Component } from 'react'; //Knows how to work with React components.
 import ReactDOM from 'react-dom'; //To render the elements to the actual DOM.
 import YTSearch from 'youtube-api-search';
+
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
 
 const API_KEY = "AIzaSyDkidiQEgNxblRS5oJvfud5Xf3T9M2kaYA";
 
@@ -19,10 +21,13 @@ class App extends Component { // const is ES6 syntax. A constant. => Fat arrow E
         });
     }
 
-    return() {
-        <div>
-            <SearchBar />
-        </div>
+    render() {
+        return (
+            <div>
+                <SearchBar />
+                <VideoList videos={this.state.videos} />
+            </div> //Passing props to VideoList called videos. Arrives as an argument under props.
+        );
     }; //JSX - lets us write HTML looking code that's really just Javascript. JSX needs to be translated, can't be understood normally by a browser.
     //Have parentheses when you have a multiline element.
     //Without JSX, the code would be a lot less readable and lengthier.
