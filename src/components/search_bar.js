@@ -8,9 +8,13 @@ class SearchBar extends Component {
     }
 
     render() { //Must always have a render method in a component.
-        return <input //this.setState causes the component to re-render. When it re-renders, the value of the input is set to the new value of this.state.term.
-            value={ this.state.term } //Controlled component. A controlled component has its value set by state. Its value only ever changes when the state changes.
-            onChange={ this.onInputChange } />; //When the input changes, then run the method onInputChange. Whenever we use JS variables we use {}.
+        return(
+            <div className="search-bar">
+                <input //this.setState causes the component to re-render. When it re-renders, the value of the input is set to the new value of this.state.term.
+                    value={ this.state.term } //Controlled component. A controlled component has its value set by state. Its value only ever changes when the state changes.
+                    onChange={ this.onInputChange } />
+            </div>
+        );//When the input changes, then run the method onInputChange. Whenever we use JS variables we use {}.
         //return <input onChange={ (event)=>console.log(event.target.value) } />; Define the function inline.
     }
 
