@@ -12,16 +12,17 @@ class SearchBar extends Component {
             <div className="search-bar">
                 <input //this.setState causes the component to re-render. When it re-renders, the value of the input is set to the new value of this.state.term.
                     value={ this.state.term } //Controlled component. A controlled component has its value set by state. Its value only ever changes when the state changes.
-                    onChange={ this.onInputChange } />
+                    onChange={ event => this.onInputChange(event.target.value) } />
             </div>
         );//When the input changes, then run the method onInputChange. Whenever we use JS variables we use {}.
         //return <input onChange={ (event)=>console.log(event.target.value) } />; Define the function inline.
     }
 
-    onInputChange(event) { //All browser events that get triggered by elements like input or such. Whenever we add an event handler, they're always called with an event object.
+    onInputChange(term) { //All browser events that get triggered by elements like input or such. Whenever we add an event handler, they're always called with an event object.
         // We can name it whatever we want. Event object describes the event that happened
-        this.setState({ term: event.target.value }); //Always use this.setState to change state. Causes the component to re-render every time the state changes.
+        this.setState({ term }); //Always use this.setState to change state. Causes the component to re-render every time the state changes.
         //Whenever we want to update our component, think of state.
+        this.props.onSearchTermChange(term);
     }
 }
 
